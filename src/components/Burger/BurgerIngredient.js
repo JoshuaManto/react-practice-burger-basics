@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styles from './BurgerIngredient.module.css';
 
 // const burgerIngredient = props => {
+
+// Changed from const to class, but still remained as a component (stateless) and not a container (stateful) since it does manage/pass the state
 class BurgerIngredient extends Component {
   render() {
     let ingredient = null;
