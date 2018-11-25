@@ -4,11 +4,38 @@ import styles from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = props => {
+  const transformedIngredients = Object.keys(props.ingredients).map(igKey => {
+    // The first map identifies and creates the array/object with the unique keys
+    // So, each type of ingredient
+    // ex: [lettuce, bacon, cheese, meat]
+
+    return [...Array(props.ingredients[igKey])].map((_, i) => {
+      // The second map is the one identifying each individual ingredient for each kind of ingredient
+      // ex: 1 lettuce 1 bacon 2 cheese 2 meat
+      // This second mapp puts the <BurgerIngredient> object to every array created
+
+      // console.log(igKey);
+      // [salad bacon cheese cheese meat meat]
+      return <BurgerIngredient key={igKey + i} type={igKey} />;
+    });
+  });
+
+  // [salad bacon cheese meat]
+  console.log(Object.keys(props.ingredients));
+
+  // [ [undefined, length=1], [undefined, length=1], [undefined, length=2], [undefined, length=2] ]
+  console.log(
+    Object.keys(props.ingredients).map(igKey => [
+      ...Array(props.ingredients[igKey])
+    ])
+  );
+
+  console.log(transformedIngredients);
+
   return (
     <div className={styles.Burger}>
       <BurgerIngredient type="bread-top" />
-      <BurgerIngredient type="cheese" />
-      <BurgerIngredient type="meat" />
+      {transformedIngredients}
       <BurgerIngredient type="bread-bottom" />
     </div>
   );
