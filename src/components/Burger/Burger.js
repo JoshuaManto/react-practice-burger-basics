@@ -1,9 +1,12 @@
 import React from 'react';
+// import { withRouter } from 'react-router-dom';
 
 import styles from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = props => {
+  // console.log(props);
+
   let transformedIngredients = Object.keys(props.ingredients)
     .map(igKey => {
       // Pre-flatten of array
@@ -51,4 +54,6 @@ const burger = props => {
   );
 };
 
+// Use withRouter to get direct access to match, history, and location in props
+// export default withRouter(burger);
 export default burger;
