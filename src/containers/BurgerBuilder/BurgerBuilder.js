@@ -35,7 +35,7 @@ class BurgerBuilder extends Component {
     // },
     // ingredients: null,
     // totalPrice: 4,
-    purchaseable: false,
+    // purchaseable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -55,6 +55,7 @@ class BurgerBuilder extends Component {
     //   });
   }
 
+  // For Local UI state type of redux state manipulation
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map(igKey => {
@@ -64,7 +65,8 @@ class BurgerBuilder extends Component {
         // el is the returned ingredients[igKey]
         return sum + el;
       }, 0);
-    this.setState({ purchaseable: sum > 0 });
+    // this.setState({ purchaseable: sum > 0 });
+    return sum > 0;
   }
 
   // addIngredientHandler = type => {
@@ -190,7 +192,7 @@ class BurgerBuilder extends Component {
             ingredientAdded={this.props.onIngredientAdded}
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
-            purchaseable={this.state.purchaseable}
+            purchaseable={this.updatePurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}
             price={this.props.price}
           />
