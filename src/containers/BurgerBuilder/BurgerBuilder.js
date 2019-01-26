@@ -37,9 +37,9 @@ class BurgerBuilder extends Component {
     // ingredients: null,
     // totalPrice: 4,
     // purchaseable: false,
-    purchasing: false,
-    loading: false,
-    error: false
+    purchasing: false
+    // loading: false,
+    // error: false
   };
 
   // Good place/function for fetching data
@@ -211,9 +211,9 @@ class BurgerBuilder extends Component {
       );
     }
 
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
-    }
+    // if (this.state.loading) {
+    //   orderSummary = <Spinner />;
+    // }
 
     return (
       <Aux>
